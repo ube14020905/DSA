@@ -14,12 +14,13 @@ class Stack
 private:
     node *top;
     int count;
+    T peek;
 public:
     Stack();
     void push(T data);
     void pop();
     int getCount();
-    T peek();
+    T getPeek();
     void display();
 };
 
