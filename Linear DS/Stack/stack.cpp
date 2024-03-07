@@ -14,14 +14,10 @@ void Stack<T>::push(T data)
     }
     else
     {
-        node<T> *current = top;
-        while (current->next != nullptr)
-        {
-            current = current->next;
-        }
-        current->next = newNode;
+        newNode->next = top;
+        top = newNode;
     }
-    peek=data;
+    peek = data;
     count++;
 }
 template <typename T>
@@ -34,17 +30,14 @@ void Stack<T>::pop()
     if (count == 1)
     {
         delete top;
-        peek=NULL;
+        peek = NULL;
         count--;
     }
     else
     {
-        node<T> current = top;
-        while (current->next != nullptr)
-        {
-            current = current->next;
-        }
-        delete current;
+        node<T> newTop = top->next;
+        top = newTop;
+        peek = top->data;
         count--;
     }
 }
@@ -66,7 +59,8 @@ void Stack<T>::display()
     }
 }
 
-template<typename T>
-T Stack<T>::getPeek(){
+template <typename T>
+T Stack<T>::getPeek()
+{
     return peek;
 }
