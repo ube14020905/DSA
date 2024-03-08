@@ -76,4 +76,19 @@ public:
     void remove(int pos);
 };
 
+template <typename T>
+class Stack : public SinglyLinkedList
+{
+private:
+    Node<T> *top;
+    int count;
+    T peek;
+public:
+    Stack();
+    void push(T data);
+    void pop();
+    T getPeek();
+    ~Stack();
+};
+
 #endif
