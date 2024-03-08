@@ -2,23 +2,21 @@
 #include <iostream>
 using namespace std;
 template <typename T>
-Stack<T>::Stack() : top(nullptr), count(0) {}
+Stack<T>::Stack(int size) : size(size),peek(NULL),count(0) {
+    stk = new T(size);
+}
 
 template <typename T>
 void Stack<T>::push(T data)
 {
-    node<t> *newNode = new node(data);
-    if (top == nullptr)
-    {
-        top = newNode;
+    if(count<size){
+        stk[count]=data;
+        peek=data;
+        count++;
     }
-    else
-    {
-        newNode->next = top;
-        top = newNode;
+    else{
+        cout<<"Stack is full!!!"<<endl;
     }
-    peek = data;
-    count++;
 }
 template <typename T>
 void Stack<T>::pop()
@@ -27,17 +25,10 @@ void Stack<T>::pop()
     {
         cout << "The stack is empty!!" << endl;
     }
-    if (count == 1)
-    {
-        delete top;
-        peek = NULL;
-        count--;
-    }
     else
     {
-        node<T> newTop = top->next;
-        top = newTop;
-        peek = top->data;
+        peek=stk[count-2];
+        stk[count-1]=NULL;
         count--;
     }
 }
@@ -50,12 +41,9 @@ int Stack<T>::getCount()
 template <typename T>
 void Stack<T>::display()
 {
-    node<T> *current = top;
-    cout << "The data present in stack: ";
-    while (current != nullptr)
-    {
-        cout << current->data << "\t";
-        current = current->next;
+    cout<<"Stack Elements: "<<endl;
+    for(int i=count-1;i<=0;i--){
+        cout<<stk[i]<<endl;
     }
 }
 

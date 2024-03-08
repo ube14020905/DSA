@@ -1,22 +1,16 @@
 #ifndef STACK_H
 #define STACK_H
-template <typename T>
-class node
-{
-public:
-    T data;
-    node *next;
-    node(T data) : data(data), next(nullptr) {}
-};
+
 template <typename T>
 class Stack
 {
 private:
-    node *top;
-    int count;
+    int size;
+    T* stk;
     T peek;
+    int count;
 public:
-    Stack();
+    Stack(int size);
     void push(T data);
     void pop();
     int getCount();
