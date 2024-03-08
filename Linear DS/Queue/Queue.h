@@ -11,5 +11,5 @@ class Queue{
         void enQue(T data);
         void deQue();
         int getCount();
-}
+};
 #endif
