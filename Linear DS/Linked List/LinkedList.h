@@ -83,12 +83,26 @@ private:
     Node<T> *top;
     int count;
     T peek;
+
 public:
     Stack();
     void push(T data);
     void pop();
     T getPeek();
     ~Stack();
+};
+
+template <typename T>
+class Queue : public SinglyLinkedList
+{
+private:
+    Node<T> *queue;
+    int count;
+
+public:
+    Queue();
+    void enQue(T data);
+    void deQue();
 };
 
 #endif
