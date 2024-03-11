@@ -52,3 +52,8 @@ void Queue<T>::display()
     }
     cout<<endl;
 }
+
+template<typename T>
+int Queue<T>::getCount(){
+    return count;
+}
