@@ -27,5 +27,6 @@ public:
     int findMin();
     int findMax();
     int getHeight();
+    ~BST();
 };
 #endif
