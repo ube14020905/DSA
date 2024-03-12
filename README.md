@@ -1,2 +1,3 @@
 # DSA
-Data Structures And Algorithms in CPP
+**CPP**
+**_Data Structures And Algorithms_** in **CPP**
