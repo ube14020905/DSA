@@ -61,22 +61,17 @@ Node<T>* removeRecursive(Node<T>* node, T key) {
     } else if (key > node->data) {
         node->right = removeRecursive(node->right, key);
     } else {
-        if (node->left == nullptr) {
-            Node<T>* temp = node->right;
-            delete node;
-            return temp;
-        } else if (node->right == nullptr) {
-            Node<T>* temp = node->left;
-            delete node;
-            return temp;
-        }
+        if (node->left == nullptr) return node->right;
+        else if (node->right == nullptr) return node->left;
 
         Node<T>* temp = findMinNode(node->right);
         node->data = temp->data;
         node->right = removeRecursive(node->right, temp->data);
     }
+
     return node;
 }
+
 
 template<typename T>
 Node<T>* findMinNode(Node<T>* node) {
