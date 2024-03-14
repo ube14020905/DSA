@@ -222,3 +222,27 @@ void destroyTree(Node<T> *node)
         delete node;
     }
 }
+template<typename T>
+void BST<T>::bfsTraversal() {
+    if (root == nullptr) {
+        return;
+    }
+
+    queue<Node<T>*> bfsQueue;
+    bfsQueue.push(root);
+
+    while (!bfsQueue.empty()) {
+        Node<T>* current = bfsQueue.front();
+        cout << current->data << " ";
+        bfsQueue.pop();
+
+        if (current->left != nullptr) {
+            bfsQueue.push(current->left);
+        }
+
+        if (current->right != nullptr) {
+            bfsQueue.push(current->right);
+        }
+    }
+}
+

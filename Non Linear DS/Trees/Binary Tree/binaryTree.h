@@ -25,6 +25,7 @@ public:
     void inorderTraversal();
     void preorderTraversal();
     void postorderTraversal();
+    void bfsTraversal();
     int findMin();
     int findMax();
     int getHeight();
