@@ -4,6 +4,9 @@
 using namespace std;
 
 template <typename T>
+Node<T>::Node(T data) : data(data), left(nullptr), right(nullptr) {}
+
+template <typename T>
 BST<T>::BST() : root(nullptr) {}
 
 template <typename T>
@@ -17,9 +20,7 @@ Node<T> *insertRecursive(Node<T> *node, T data)
 {
     if (node == nullptr)
     {
-        node = new Node<T>;
-        node->data = data;
-        node->left = node->right = nullptr;
+        node = new Node<T>(data);
     }
     else if (data < node->data)
     {
