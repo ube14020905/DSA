@@ -28,6 +28,7 @@ void Stack<T>::pop()
     else if(count == 1){
         stk[0]=NULL;
         peek=NULL;
+        count--;
     }
     else
     {
