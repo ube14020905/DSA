@@ -47,7 +47,7 @@ template <typename T>
 void Stack<T>::display()
 {
     cout<<"Stack Elements: "<<endl;
-    for(int i=count-1;i<=0;i--){
+    for(int i=count-1;i>=0;i--){
         cout<<stk[i]<<endl;
     }
 }
