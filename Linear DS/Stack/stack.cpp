@@ -25,6 +25,10 @@ void Stack<T>::pop()
     {
         cout << "The stack is empty!!" << endl;
     }
+    else if(count == 1){
+        stk[0]=NULL;
+        peek=NULL;
+    }
     else
     {
         peek=stk[count-2];
