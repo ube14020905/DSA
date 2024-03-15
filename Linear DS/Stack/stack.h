@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-template <typename T>
+template <class T>
 class Stack
 {
 private:
@@ -17,5 +17,6 @@ public:
     T getPeek();
     void display();
 };
+#include "stack.cpp"
 
 #endif
