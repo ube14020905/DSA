@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-template <typename T>
+template <class T>
 class Node
 {
 public:
@@ -12,14 +12,14 @@ public:
     Node(T data) : data(data), next(nullptr) {}
 };
 
-template <typename T>
+template <class T>
 class DLLNode : public Node<T>
 {
 public:
     Node<T> *prev;
 };
 
-template <typename T>
+template <class T>
 class SinglyLinkedList
 {
 private:
@@ -42,7 +42,7 @@ public:
     void decrementCount();
 };
 
-template <typename T>
+template <class T>
 class DoubleLinkedList : public SinglyLinkedList<T>
 {
 private:
@@ -56,7 +56,7 @@ public:
     void remove(int pos);
 };
 
-template <typename T>
+template <class T>
 class CircularLinkedList : public SinglyLinkedList<T>
 {
 public:
@@ -66,7 +66,7 @@ public:
     void remove(int pos);
 };
 
-template <typename T>
+template <class T>
 class DoubleCircularLinkedList : public DoubleLinkedList<T>
 {
 public:
@@ -76,7 +76,7 @@ public:
     void remove(int pos);
 };
 
-template <typename T>
+template <class T>
 class Stack : public SinglyLinkedList
 {
 private:
@@ -92,7 +92,7 @@ public:
     ~Stack();
 };
 
-template <typename T>
+template <class T>
 class Queue : public SinglyLinkedList
 {
 private:
@@ -104,5 +104,11 @@ public:
     void enQue(T data);
     void deQue();
 };
+#include "SinglyLinkedList.cpp"
+#include "Stack.cpp"
+#include "CircularDoubleLinkedList.cpp"
+#include "CircularLinkedList.cpp"
+#include "DoubleLinkedList.cpp"
+#include "Queue.cpp"
 
 #endif

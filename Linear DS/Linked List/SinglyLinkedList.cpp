@@ -1,11 +1,11 @@
-#include "LinkedList.h"
+#include <iostream>
 
 using namespace std;
 
-template <typename T>
+template <class T>
 SinglyLinkedList<T>::SinglyLinkedList() : head(nullptr), count(0) {}
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::append(T val)
 {
     Node<T> *newNode = new Node<T>(val);
@@ -26,7 +26,7 @@ void SinglyLinkedList<T>::append(T val)
     count++;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::insert(T val, int pos)
 {
     if (pos < 0 || pos > count)
@@ -55,7 +55,7 @@ void SinglyLinkedList<T>::insert(T val, int pos)
     count++;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::pop()
 {
     if (head == nullptr)
@@ -84,7 +84,7 @@ void SinglyLinkedList<T>::pop()
     count--;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::remove(int pos)
 {
     if (pos < 0 || pos >= count)
@@ -115,7 +115,7 @@ void SinglyLinkedList<T>::remove(int pos)
     count--;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::search(T data)
 {
     Node<T> *currentNode = head;
@@ -137,7 +137,7 @@ void SinglyLinkedList<T>::search(T data)
     }
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::display()
 {
     Node<T> *currentNode = head;
@@ -149,37 +149,37 @@ void SinglyLinkedList<T>::display()
     }
 }
 
-template <typename T>
+template <class T>
 int SinglyLinkedList<T>::getCount()
 {
     return count;
 }
 
-template <typename T>
+template <class T>
 bool SinglyLinkedList<T>::isEmpty() const
 {
     return head == nullptr;
 }
 
-template <typename T>
+template <class T>
 Node<T> *SinglyLinkedList<T>::getHead() const
 {
     return head;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::setHead(Node<T> *newHead)
 {
     head = newHead;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::incrementCount()
 {
     count++;
 }
 
-template <typename T>
+template <class T>
 void SinglyLinkedList<T>::decrementCount()
 {
     count--;

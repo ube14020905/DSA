@@ -1,11 +1,11 @@
-#include "LinkedList.h"
+#include<iostream>
 
 using namespace std;
 
-template <typename T>
+template <class T>
 DoubleLinkedList<T>::DoubleLinkedList() : SinglyLinkedList<T>(), head(nullptr) {}
 
-template <typename T>
+template <class T>
 void DoubleLinkedList<T>::displayFromBack()
 {
     DLLNode<T> *current = head;
@@ -23,7 +23,7 @@ void DoubleLinkedList<T>::displayFromBack()
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void DoubleLinkedList<T>::append(T data)
 {
     DLLNode<T> *newNode = new DLLNode<T>;
@@ -48,7 +48,7 @@ void DoubleLinkedList<T>::append(T data)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void DoubleLinkedList<T>::insert(T data, int pos)
 {
     if (pos < 0 || pos > this->getCount())
@@ -89,7 +89,7 @@ void DoubleLinkedList<T>::insert(T data, int pos)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void DoubleLinkedList<T>::remove(int pos)
 {
     if (pos < 0 || pos >= this->getCount())

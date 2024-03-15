@@ -1,8 +1,8 @@
-#include "LinkedList.h"
+#include<iostream>
 
 using namespace std;
 
-template <typename T>
+template <class T>
 void CircularLinkedList<T>::display()
 {
     if (this->isEmpty())
@@ -21,7 +21,7 @@ void CircularLinkedList<T>::display()
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void CircularLinkedList<T>::append(T data)
 {
     Node<T> *newNode = new Node<T>(data);
@@ -45,7 +45,7 @@ void CircularLinkedList<T>::append(T data)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void CircularLinkedList<T>::insert(T data, int pos)
 {
     if (pos < 0 || pos > this->getCount())
@@ -82,7 +82,7 @@ void CircularLinkedList<T>::insert(T data, int pos)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void CircularLinkedList<T>::remove(int pos)
 {
     if (pos < 0 || pos >= this->getCount())

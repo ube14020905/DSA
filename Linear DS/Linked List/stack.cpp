@@ -1,10 +1,10 @@
-#include "LinkedList.h"
+
 #include <iostream>
 using namespace std;
-template <typename T>
-Stack<T>::Stack() : top(nullptr), count(0), peek(NULL) {}
+template <class T>
+Stack<T>::Stack() : top(nullptr), count(0), peek(T()) {}
 
-template <typename T>
+template <class T>
 void Stack<T>::push(T data)
 {
     node<t> *newNode = new node(data);
@@ -20,7 +20,7 @@ void Stack<T>::push(T data)
     peek = data;
     count++;
 }
-template <typename T>
+template <class T>
 void Stack<T>::pop()
 {
     if (count == 0)
@@ -31,7 +31,7 @@ void Stack<T>::pop()
     {
         delete top;
         top=nullptr;
-        peek = NULL;
+        peek = T();
         count--;
     }
     else
@@ -43,12 +43,12 @@ void Stack<T>::pop()
         count--;
     }
 }
-template <typename T>
+template <class T>
 T Stack<T>::getPeek()
 {
     return peek;
 }
-template <typename T>
+template <class T>
 Stack<T>::~Stack()
 {
     while (top != nullptr)

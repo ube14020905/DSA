@@ -1,8 +1,7 @@
-#include "LinkedList.h"
-
+#include<iostream>
 using namespace std;
 
-template <typename T>
+template <class T>
 void DoubleCircularLinkedList<T>::displayFromBack()
 {
     if (this->isEmpty())
@@ -21,7 +20,7 @@ void DoubleCircularLinkedList<T>::displayFromBack()
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void DoubleCircularLinkedList<T>::append(T data)
 {
     DLLNode<T> *newNode = new DLLNode<T>;
@@ -46,7 +45,7 @@ void DoubleCircularLinkedList<T>::append(T data)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void DoubleCircularLinkedList<T>::insert(T data, int pos)
 {
     if (pos < 0 || pos > this->getCount())
@@ -83,7 +82,7 @@ void DoubleCircularLinkedList<T>::insert(T data, int pos)
     this->incrementCount();
 }
 
-template <typename T>
+template <class T>
 void DoubleCircularLinkedList<T>::remove(int pos)
 {
     if (pos < 0 || pos >= this->getCount())

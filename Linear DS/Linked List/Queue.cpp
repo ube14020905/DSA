@@ -1,11 +1,10 @@
-#include "LinkedList.h"
 #include <iostream>
 using namespace std;
 
-template <typename T>
+template <class T>
 Queue<T>::Queue() : queue(nullptr), count(0) {}
 
-template <typename T>
+template <class T>
 void Queue<T>::enQue(T data)
 {
     Node<T> newNode = new Node(data);
@@ -20,7 +19,7 @@ void Queue<T>::enQue(T data)
     }
     count++;
 }
-template <typename T>
+template <class T>
 void Queue<T>::deQue()
 {
     if (count == 0)
