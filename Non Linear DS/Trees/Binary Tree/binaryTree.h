@@ -31,4 +31,6 @@ public:
     int getHeight();
     ~BST();
 };
+
+#include "BinarySearchTree.cpp"
 #endif

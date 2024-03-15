@@ -3,19 +3,19 @@
 
 using namespace std;
 
-template <typename T>
+template <class T>
 Node<T>::Node(T data) : data(data), left(nullptr), right(nullptr) {}
 
-template <typename T>
+template <class T>
 BST<T>::BST() : root(nullptr) {}
 
-template <typename T>
+template <class T>
 void BST<T>::insert(T data)
 {
     root = insertRecursive(root, data);
 }
 
-template <typename T>
+template <class T>
 Node<T> *insertRecursive(Node<T> *node, T data)
 {
     if (node == nullptr)
@@ -33,13 +33,13 @@ Node<T> *insertRecursive(Node<T> *node, T data)
     return node;
 }
 
-template <typename T>
+template <class T>
 bool BST<T>::search(T key)
 {
     return searchRecursive(root, key);
 }
 
-template <typename T>
+template <class T>
 bool searchRecursive(Node<T> *node, T key)
 {
     if (node == nullptr)
@@ -61,13 +61,13 @@ bool searchRecursive(Node<T> *node, T key)
     }
 }
 
-template <typename T>
+template <class T>
 void BST<T>::remove(T key)
 {
     root = removeRecursive(root, key);
 }
 
-template <typename T>
+template <class T>
 Node<T> *removeRecursive(Node<T> *node, T key)
 {
     if (node == nullptr)
@@ -98,7 +98,7 @@ Node<T> *removeRecursive(Node<T> *node, T key)
     return node;
 }
 
-template <typename T>
+template <class T>
 Node<T> *findMinNode(Node<T> *node)
 {
     while (node->left != nullptr)
@@ -108,14 +108,14 @@ Node<T> *findMinNode(Node<T> *node)
     return node;
 }
 
-template <typename T>
+template <class T>
 void BST<T>::inorderTraversal()
 {
     inorderRecursive(root);
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void inorderRecursive(Node<T> *node)
 {
     if (node != nullptr)
@@ -126,14 +126,14 @@ void inorderRecursive(Node<T> *node)
     }
 }
 
-template <typename T>
+template <class T>
 void BST<T>::preorderTraversal()
 {
     preorderRecursive(root);
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void preorderRecursive(Node<T> *node)
 {
     if (node != nullptr)
@@ -144,14 +144,14 @@ void preorderRecursive(Node<T> *node)
     }
 }
 
-template <typename T>
+template <class T>
 void BST<T>::postorderTraversal()
 {
     postorderRecursive(root);
     cout << endl;
 }
 
-template <typename T>
+template <class T>
 void postorderRecursive(Node<T> *node)
 {
     if (node != nullptr)
@@ -162,21 +162,21 @@ void postorderRecursive(Node<T> *node)
     }
 }
 
-template <typename T>
+template <class T>
 int BST<T>::findMin()
 {
     Node<T> *minNode = findMinNode(root);
     return minNode != nullptr ? minNode->data : -1;
 }
 
-template <typename T>
+template <class T>
 int BST<T>::findMax()
 {
     Node<T> *maxNode = findMaxNode(root);
     return maxNode != nullptr ? maxNode->data : -1;
 }
 
-template <typename T>
+template <class T>
 Node<T> *findMaxNode(Node<T> *node)
 {
     while (node->right != nullptr)
@@ -186,13 +186,13 @@ Node<T> *findMaxNode(Node<T> *node)
     return node;
 }
 
-template <typename T>
+template <class T>
 int BST<T>::getHeight()
 {
     return calculateHeight(root);
 }
 
-template <typename T>
+template <class T>
 int calculateHeight(Node<T> *node)
 {
     if (node == nullptr)
@@ -206,13 +206,13 @@ int calculateHeight(Node<T> *node)
     return 1 + max(leftHeight, rightHeight);
 }
 
-template <typename T>
+template <class T>
 BST<T>::~BST()
 {
     destroyTree(root);
 }
 
-template <typename T>
+template <class T>
 void destroyTree(Node<T> *node)
 {
     if (node != nullptr)
@@ -222,7 +222,7 @@ void destroyTree(Node<T> *node)
         delete node;
     }
 }
-template<typename T>
+template<class T>
 void BST<T>::bfsTraversal() {
     if (root == nullptr) {
         return;
