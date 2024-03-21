@@ -34,13 +34,13 @@ void CircularLinkedList<T>::append(T data)
     }
     else
     {
-        Node<T> *last = this->getHead();
-        while (last->next != this->getHead())
+        Node<T> *last = head;
+        while (last->next != head)
         {
             last = last->next;
         }
         last->next = newNode;
-        newNode->next = this->getHead();
+        newNode->next = head;
     }
     this->incrementCount();
 }
@@ -59,11 +59,11 @@ void CircularLinkedList<T>::insert(T data, int pos)
 
     if (pos == 0)
     {
-        newNode->next = this->getHead();
-        this->setHead(newNode);
+        newNode->next = head;
+        head=newNode;
 
-        Node<T> *last = this->getHead();
-        while (last->next != this->getHead())
+        Node<T> *last =head;
+        while (last->next != head)
         {
             last = last->next;
         }
@@ -71,7 +71,7 @@ void CircularLinkedList<T>::insert(T data, int pos)
     }
     else
     {
-        Node<T> *current = this->getHead();
+        Node<T> *current = head;
         for (int i = 0; i < pos - 1; ++i)
         {
             current = current->next;
@@ -93,21 +93,20 @@ void CircularLinkedList<T>::remove(int pos)
 
     if (pos == 0)
     {
-        Node<T> *temp = this->getHead();
-        this->setHead(this->getHead()->next);
-
-        Node<T> *last = this->getHead();
+        Node<T> *temp = head;
+        head=head->next;
+        Node<T> *last = head;
         while (last->next != temp)
         {
             last = last->next;
         }
-        last->next = this->getHead();
+        last->next = head;
 
         delete temp;
     }
     else
     {
-        Node<T> *current = this->getHead();
+        Node<T> *current = head;
         for (int i = 0; i < pos - 1; ++i)
         {
             current = current->next;
