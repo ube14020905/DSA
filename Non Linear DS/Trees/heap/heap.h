@@ -8,19 +8,28 @@ public:
     T data;
     node<T> *next;
     node<T> *prev;
+    node(T data) : data(data), next(nullptr), prev(nullptr) {}
 };
 template <class T>
 class heap
 {
 public:
-    void display() const;
+    void display(){}
 };
 template <class T>
 class minHeap : public heap<T>
 {
 private:
     node<T> *root;
-    void heapify(node<T> newNode);
+    void heapify(node<T> newNode)
+    {
+        node<T> *current = newNode;
+        while (current->prev != nullptr && current->prev->data > current->data)
+        {
+            swap(current->data, current->prev->data);
+            current = current->prev;
+        }
+    }
     int count;
 
 public:
@@ -28,13 +37,15 @@ public:
     ~minHeap();
     void insert(T data);
     void remove(T data);
+    void display() override;
     T getMax();
     T getMin();
 };
 
 template <class T>
-class maxHeap : public heap<T>{
-    private:
+class maxHeap : public heap<T>
+{
+private:
     node<T> *root;
     void heapify(node<T> newNode);
     int count;
@@ -46,5 +57,7 @@ public:
     void remove(T data);
     T getMax();
     T getMin();
+    void display() const override;
 };
+#include "minHeap.cpp"
 #endif
