@@ -14,7 +14,7 @@ template <class T>
 class heap
 {
 public:
-    void display(){}
+    void display() {}
 };
 template <class T>
 class minHeap : public heap<T>
@@ -47,7 +47,15 @@ class maxHeap : public heap<T>
 {
 private:
     node<T> *root;
-    void heapify(node<T> newNode);
+    void heapify(node<T> newNode)
+    {
+        node<T> *current = newNode;
+        while (current->prev != nullptr && current->prev->data < current->data)
+        {
+            swap(current->data, current->prev->data);
+            current = current->prev;
+        }
+    }
     int count;
 
 public:
@@ -57,7 +65,11 @@ public:
     void remove(T data);
     T getMax();
     T getMin();
-    void display() const override;
+    void display() override;
 };
+template<class T>
+void collapse(node<T>* n);
+template <class T>
+void displayRecursive(node<T> node);
 #include "minHeap.cpp"
 #endif
