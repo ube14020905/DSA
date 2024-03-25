@@ -21,15 +21,27 @@ class minHeap : public heap<T>
 {
 private:
     node<T> *root;
-    void heapify(node<T> newNode)
+    template <class T>
+    void heapify(node<T> *current)
     {
-        node<T> *current = newNode;
-        while (current->left != nullptr && current->left->data > current->data)
+        if (current == nullptr)
+            return;
+
+        node<T> *smallest = current;
+
+        if (current->left != nullptr && current->left->data < smallest->data)
+            smallest = current->left;
+
+        if (current->right != nullptr && current->right->data < smallest->data)
+            smallest = current->right;
+
+        if (smallest != current)
         {
-            swap(current->data, current->left->data);
-            current = current->left;
+            std::swap(current->data, smallest->data);
+            heapify(smallest);
         }
     }
+
     int count;
 
 public:
@@ -47,16 +59,26 @@ class maxHeap : public heap<T>
 {
 private:
     node<T> *root;
-    void heapify(node<T> newNode)
+    int count;
+    template <class T>
+    void heapify(node<T> *current)
     {
-        node<T> *current = newNode;
-        while (current->left != nullptr && current->left->data < current->data)
+        if (current == nullptr)
+            return;
+
+        node<T> *largest = current;
+
+        if (current->left != nullptr && current->left->data > largest->data)
+            largest = current->left;
+
+        if (current->right != nullptr && current->right->data > largest->data)
+            largest = current->right;
+        if (largest != current)
         {
-            swap(current->data, current->left->data);
-            current = current->left;
+            std::swap(current->data, largest->data);
+            heapify(largest);
         }
     }
-    int count;
 
 public:
     maxHeap();
@@ -67,9 +89,10 @@ public:
     T getMin();
     void display() override;
 };
-template<class T>
-void collapse(node<T>* n);
+template <class T>
+void collapse(node<T> *n);
 template <class T>
 void displayRecursive(node<T> node);
 #include "minHeap.cpp"
+#include "maxHeap.cpp"
 #endif
