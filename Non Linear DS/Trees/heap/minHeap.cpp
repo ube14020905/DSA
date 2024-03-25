@@ -9,19 +9,19 @@ minHeap<T>::minHeap() : root(nullptr), count(0) {}
 template <class T>
 void collapse(node<T> *n)
 {
-    if (n->next == nullptr && n->prev == nullptr)
+    if (n->right == nullptr && n->left == nullptr)
     {
         delete n;
     }
     else
     {
-        if (n->next == nullptr)
+        if (n->right == nullptr)
         {
-            collapse(n->prev);
+            collapse(n->left);
         }
         else
         {
-            collapse(n->next);
+            collapse(n->right);
         }
     }
 }
@@ -42,12 +42,12 @@ void minHeap<T>::insert(T data)
     else
     {
         node<T> *temp = root;
-        while (temp->next != nullptr)
+        while (temp->right != nullptr)
         {
-            temp = temp->next;
+            temp = temp->right;
         }
-        temp->next = newNode;
-        newNode->prev = temp;
+        temp->right = newNode;
+        newNode->left = temp;
         heapify(newNode);
     }
     count++;
@@ -73,7 +73,7 @@ void minHeap<T>::remove(T data)
     node<T> *current = root;
     while (current != nullptr && current->data != data)
     {
-        current = current->next;
+        current = current->right;
     }
     if (current == nullptr)
     {
@@ -81,15 +81,15 @@ void minHeap<T>::remove(T data)
     }
 
     node<T> *lastNode = current;
-    while (lastNode->next != nullptr)
+    while (lastNode->right != nullptr)
     {
-        lastNode = lastNode->next;
+        lastNode = lastNode->right;
     }
     std::swap(current->data, lastNode->data);
 
-    if (lastNode->prev != nullptr)
+    if (lastNode->left != nullptr)
     {
-        lastNode->prev->next = nullptr;
+        lastNode->left->right = nullptr;
     }
     else
     {
@@ -121,9 +121,9 @@ T minHeap<T>::getMax()
         throw logic_error("Heap is empty");
     }
     node<T> *current = root;
-    while (current->next != nullptr)
+    while (current->right != nullptr)
     {
-        current = current->next;
+        current = current->right;
     }
     return current->data;
 }
