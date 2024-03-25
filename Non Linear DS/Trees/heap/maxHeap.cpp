@@ -21,12 +21,12 @@ void maxHeap<T>::insert(T data)
     else
     {
         node<T> *temp = root;
-        while (temp->next != nullptr)
+        while (temp->right != nullptr)
         {
-            temp = temp->next;
+            temp = temp->right;
         }
-        temp->next = newNode;
-        newNode->prev = temp;
+        temp->right = newNode;
+        newNode->left = temp;
         heapify(newNode);
     }
     count++;
@@ -45,4 +45,68 @@ void displayRecursive(node<T> node)
         cout << node->data << " ";
         displayRecursive(node->right);
     }
+}
+template <class T>
+void maxHeap<T>::remove(T data)
+{
+    node<T> *current = root;
+    node<T> *parent = nullptr;
+    while (current != nullptr && current->data != data)
+    {
+        parent = current;
+        if (data > current->data)
+            current = current->right;
+        else
+            current = current->left;
+    }
+
+    if (current == nullptr)
+        return;
+
+    node<T> *lastParent = nullptr;
+    node<T> *last = root;
+    while (last->left != nullptr || last->right != nullptr)
+    {
+        lastParent = last;
+        if (last->right != nullptr && last->right->right != nullptr)
+            last = last->right;
+        else
+            last = last->left;
+    }
+
+    std::swap(current->data, last->data);
+
+    if (lastParent == nullptr)
+    {
+        delete last;
+        root = nullptr;
+        return;
+    }
+
+    if (lastParent->left == last)
+        lastParent->left = nullptr;
+    else
+        lastParent->right = nullptr;
+
+    delete last;
+
+    heapify(root);
+}
+template<class T>
+T maxHeap<T>::getMax(){
+    if(root!== nullptr){
+        return root->data;
+    }
+    throw logic_error("heap is empty");
+}
+template<class T>
+T maxHeap<T>::getMin(){
+    if(root== nullptr){
+    throw logic_error("heap is empty");
+    }
+    node<T>* current=root;
+    while(current->left !=nullptr){
+        current=current->left;
+    }
+    return current->data;
 }
