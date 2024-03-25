@@ -6,9 +6,9 @@ class node
 {
 public:
     T data;
-    node<T> *next;
-    node<T> *prev;
-    node(T data) : data(data), next(nullptr), prev(nullptr) {}
+    node<T> *right;
+    node<T> *left;
+    node(T data) : data(data), left(nullptr), right(nullptr) {}
 };
 template <class T>
 class heap
@@ -24,10 +24,10 @@ private:
     void heapify(node<T> newNode)
     {
         node<T> *current = newNode;
-        while (current->prev != nullptr && current->prev->data > current->data)
+        while (current->left != nullptr && current->left->data > current->data)
         {
-            swap(current->data, current->prev->data);
-            current = current->prev;
+            swap(current->data, current->left->data);
+            current = current->left;
         }
     }
     int count;
@@ -50,10 +50,10 @@ private:
     void heapify(node<T> newNode)
     {
         node<T> *current = newNode;
-        while (current->prev != nullptr && current->prev->data < current->data)
+        while (current->left != nullptr && current->left->data < current->data)
         {
-            swap(current->data, current->prev->data);
-            current = current->prev;
+            swap(current->data, current->left->data);
+            current = current->left;
         }
     }
     int count;
