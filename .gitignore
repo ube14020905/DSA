@@ -9,3 +9,5 @@
 *.o
 *.obj
 
+# Ignore Include files
+*.h
